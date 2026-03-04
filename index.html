@@ -1,33 +1,167 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Calculateur de moyennes</title>
 <meta charset="UTF-8">
+<title>Calculateur de Moyennes</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f5f7fb;
+margin:0;
+padding:0;
+}
+
+header{
+background:#1e2a38;
+color:white;
+padding:20px;
+text-align:center;
+font-size:24px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+h2{
+margin-top:0;
+}
+
+input{
+width:70px;
+padding:8px;
+margin:5px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+.result{
+font-weight:bold;
+margin-top:10px;
+}
+
+button{
+padding:10px 15px;
+border:none;
+border-radius:6px;
+background:#2e6df6;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#1f4fd1;
+}
+
+.semester{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.ue{
+flex:1;
+min-width:150px;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h1>Calculateur de moyenne</h1>
+<header>
+Calculateur de Moyennes I2
+</header>
 
-<p>Entre tes notes :</p>
+<div class="container">
 
-<input id="note1" type="number" placeholder="Note 1">
-<input id="note2" type="number" placeholder="Note 2">
+<div class="card">
 
-<button onclick="calculer()">Calculer</button>
+<h2>UE2 – Electronique</h2>
 
-<p id="resultat"></p>
+<h3>Electronique I2</h3>
+
+CC :
+<input id="elec_cc">
+
+TP :
+<input id="elec_tp">
+
+<div class="result" id="elec_res"></div>
+
+<hr>
+
+<h3>Projet Makerspace</h3>
+
+Projet :
+<input id="maker_proj">
+
+<div class="result" id="maker_res"></div>
+
+<hr>
+
+<h3>Outils Mathématiques</h3>
+
+CC1 :
+<input id="math_cc1">
+
+CC2 :
+<input id="math_cc2">
+
+<div class="result" id="math_res"></div>
+
+<hr>
+
+<button onclick="calculer()">Calculer la moyenne UE</button>
+
+<div class="result" id="ue_res"></div>
+
+</div>
+
+</div>
 
 <script>
-function calculer() {
-let n1 = Number(document.getElementById("note1").value)
-let n2 = Number(document.getElementById("note2").value)
 
-let moyenne = (n1 + n2) / 2
+function calculer(){
 
-document.getElementById("resultat").innerHTML =
-"Moyenne : " + moyenne
+let elec_cc = Number(document.getElementById("elec_cc").value)
+let elec_tp = Number(document.getElementById("elec_tp").value)
+
+let maker = Number(document.getElementById("maker_proj").value)
+
+let math1 = Number(document.getElementById("math_cc1").value)
+let math2 = Number(document.getElementById("math_cc2").value)
+
+let elec = elec_cc*0.5 + elec_tp*0.5
+let math = (math1 + math2)/2
+
+document.getElementById("elec_res").innerHTML = "Moyenne : "+elec.toFixed(2)
+document.getElementById("math_res").innerHTML = "Moyenne : "+math.toFixed(2)
+document.getElementById("maker_res").innerHTML = "Moyenne : "+maker.toFixed(2)
+
+let ue =
+elec*0.28 +
+maker*0.27 +
+math*0.45
+
+document.getElementById("ue_res").innerHTML =
+"Moyenne UE : "+ue.toFixed(2)
+
 }
+
 </script>
 
 </body>
