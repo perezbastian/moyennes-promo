@@ -45,9 +45,9 @@ display:none;
 }
 
 input{
-width:70px;
+width:60px;
 padding:6px;
-margin:4px;
+margin:5px;
 }
 
 button{
@@ -71,16 +71,16 @@ Calculateur de Moyennes I2
 
 <div class="container">
 
-<!-- PAGE ACCUEIL -->
+<!-- ACCUEIL -->
 
 <div id="home">
 
 <div class="card" onclick="openPage('s3')">
-Semestre 3
+📚 Semestre 3
 </div>
 
 <div class="card" onclick="openPage('s4')">
-Semestre 4
+📚 Semestre 4
 </div>
 
 </div>
@@ -91,9 +91,10 @@ Semestre 4
 
 <button onclick="openPage('home')">⬅ Retour</button>
 
-<div class="card" onclick="openPage('ue2')">
-UE2 – Electronique
-</div>
+<div class="card" onclick="openPage('ue1')">UE1</div>
+<div class="card" onclick="openPage('ue2')">UE2</div>
+<div class="card" onclick="openPage('ue3')">UE3</div>
+<div class="card" onclick="openPage('ue7')">UE7</div>
 
 </div>
 
@@ -142,10 +143,11 @@ CC2
 
 function openPage(page){
 
-let pages = ["home","s3","s4","ue2"]
+let pages = ["home","s3","s4","ue1","ue2","ue3","ue7"]
 
 pages.forEach(p=>{
-document.getElementById(p).classList.add("hidden")
+let el=document.getElementById(p)
+if(el){el.classList.add("hidden")}
 })
 
 document.getElementById(page).classList.remove("hidden")
